@@ -10,9 +10,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         tokens = Token.objects.all()
         if tokens.count():
-            self.stdout.write(
-                self.style.SUCCESS(f"Token tokens[0].key")
-            )
+            self.stdout.write(self.style.SUCCESS("Token tokens[0].key"))
         else:
             user = User.objects.create_user(
                 username=os.environ.get("EMAIL_ADDRESS", "piotr").split("@")[0],
